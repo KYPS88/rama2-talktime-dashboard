@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>RAMA2's Talktime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="60" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --navy:        #0B2447;
+      --navy-dark:   #07183A;
+      --navy-soft:   #19376D;
+      --blue:        #576CBC;
+      --blue-soft:   #A5D7E8;
+      --blue-bg:     #EEF3FA;
+      --ink:         #0B2447;
+      --ink-soft:    #4A5A7A;
+      --border:      #E3EAF4;
+      --white:       #FFFFFF;
+      --success:     #2FA66B;
+      --danger:      #D95757;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: 'Prompt', 'Segoe UI', sans-serif;
+      background: var(--blue-bg);
+      color: var(--ink);
+    }
+    header {
+      background: linear-gradient(120deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-soft) 100%);
+      color: var(--white);
+      padding: 28px 36px 24px 36px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      box-shadow: 0 2px 14px rgba(11, 36, 71, 0.15);
+    }
+    header h1 {
+      margin: 0; font-weight: 600; font-size: 26px; letter-spacing: 0.3px;
+    }
+    header .subtitle {
+      margin-top: 4px; font-weight: 300; opacity: 0.82; font-size: 14px;
+    }
+    header .meta {
+      text-align: right; font-size: 13px; font-weight: 300;
+    }
+    header .meta .big {
+      font-size: 16px; font-weight: 500;
+    }
+    .status-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: #5EE6A8; margin-right: 6px;
+      box-shadow: 0 0 0 0 rgba(94,230,168,.7);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(94,230,168,.7); }
+      70%  { box-shadow: 0 0 0 10px rgba(94,230,168,0); }
+      100% { box-shadow: 0 0 0 0 rgba(94,230,168,0); }
+    }
+
+    main { padding: 24px 36px 48px 36px; max-width: 1600px; margin: 0 auto; }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .kpi {
+      background: var(--white); border-radius: 14px; padding: 20px 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(11,36,71,0.04);
+    }
+    .kpi .label {
+      color: var(--ink-soft); font-size: 13px; font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.6px;
+    }
+    .kpi .value {
+      margin-top: 6px; font-size: 28px; font-weight: 600; color: var(--navy);
+    }
+    .kpi .value.sub { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
+    .kpi.accent { border-left: 4px solid var(--blue); }
+    .kpi.accent-2 { border-left: 4px solid var(--navy); }
+    .kpi.accent-3 { border-left: 4px solid var(--blue-soft); }
+    .kpi.accent-4 { border-left: 4px solid var(--success); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 1100px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--white); border-radius: 14px; padding: 20px 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(11,36,71,0.04);
+    }
+    .card h2 {
+      margin: 0 0 14px 0; font-size: 17px; font-weight: 600; color: var(--navy);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .card h2 .hint {
+      font-size: 12px; font-weight: 400; color: var(--ink-soft);
+    }
+
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+    }
+    thead th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 12px; text-align: left; font-weight: 500;
+      position: sticky; top: 0;
+    }
+    thead th:first-child { border-top-left-radius: 8px; }
+    thead th:last-child  { border-top-right-radius: 8px; text-align: right; }
+    tbody td {
+      padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle;
+    }
+    tbody tr:hover { background: var(--blue-bg); }
+    tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .rank {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--blue-bg); color: var(--navy);
+      font-size: 12px; font-weight: 600;
+    }
+    .rank.top1 { background: var(--navy);     color: var(--white); }
+    .rank.top2 { background: var(--blue);     color: var(--white); }
+    .rank.top3 { background: var(--blue-soft);color: var(--navy); }
+
+    .bar-wrap {
+      position: relative; background: var(--blue-bg);
+      border-radius: 6px; height: 8px; overflow: hidden; min-width: 80px;
+    }
+    .bar-fill {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--navy) 100%);
+      border-radius: 6px;
+    }
+
+    .chart-wrap { position: relative; height: 340px; }
+
+    footer {
+      text-align: center; color: var(--ink-soft); font-size: 12px;
+      padding: 16px 8px 24px 8px;
+    }
+
+    .empty {
+      padding: 40px; text-align: center; color: var(--ink-soft);
+      background: var(--white); border: 1px dashed var(--border);
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>RAMA2's Talktime</h1>
+      <div class="subtitle">สรุปการโทรออก / รับสาย ของพนักงานทุกคน · เรียงตามทอล์กไทม์สูงสุด</div>
+    </div>
+    <div class="meta">
+      <div><span class="status-dot"></span>ข้อมูลล่าสุด</div>
+      <div class="big">12/05/2026 14:28</div>
+      <div>รีเฟรชอัตโนมัติทุกชั่วโมง · จ.–ส. 10:00–18:00</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- KPI cards -->
+    <section class="kpi-row">
+      <div class="kpi accent">
+        <div class="label">พนักงานทั้งหมด</div>
+        <div class="value" id="kpi-agents">—</div>
+        <div class="value sub">รวมคน</div>
+      </div>
+      <div class="kpi accent-3">
+        <div class="label">จำนวนสายทั้งหมด</div>
+        <div class="value" id="kpi-total-calls">—</div>
+        <div class="value sub" id="kpi-answered-sub">รับสำเร็จ —</div>
+      </div>
+      <div class="kpi accent-4">
+        <div class="label">เฉลี่ยต่อคน</div>
+        <div class="value" id="kpi-avg">—</div>
+        <div class="value sub">ต่อหนึ่งพนักงาน</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="grid-2">
+      <div class="card">
+        <h2>Top 10 ทอล์กไทม์ <span class="hint">หน่วย: นาที</span></h2>
+        <div class="chart-wrap"><canvas id="chart-talktime"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>จำนวนสายโทรออก / รับสาย <span class="hint">Top 10 ตามสายรวม</span></h2>
+        <div class="chart-wrap"><canvas id="chart-calls"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="card">
+      <h2>รายละเอียดรายคน <span class="hint" id="row-hint"></span></h2>
+      <div style="overflow-x:auto; max-height: 70vh; overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:60px;">อันดับ</th>
+              <th>เบอร์ภายใน</th>
+              <th>ชื่อพนักงาน</th>
+              <th class="num" style="text-align:right;">สายทั้งหมด</th>
+              <th class="num" style="text-align:right;">รับสำเร็จ</th>
+              <th class="num" style="text-align:right;">รับสาย 30 วิ+</th>
+              <th class="num" style="text-align:right;">ไม่สำเร็จ</th>
+              <th class="num" style="text-align:right;">ทอล์กไทม์</th>
+              <th class="num" style="text-align:right;">เพิ่ม/ชม.</th>
+              <th class="num" style="text-align:right;">เฉลี่ย / สาย</th>
+              <th style="min-width:150px;">สัดส่วน</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ข้อมูลจาก <a href="https://client.yalecom.co.th/custom_menu/extension_summary_outbound" style="color:var(--navy-soft);">client.yalecom.co.th</a>
+    · แหล่ง: extension_summary_outbound · สร้างเมื่อ 12/05/2026 14:28
+  </footer>
+
+  <script>
+    const DATA = {"updated_at": "2026-05-12T14:28:00", "updated_label": "12/05/2026 14:28", "source": "https://client.yalecom.co.th/custom_menu/extension_summary_outbound", "row_count": 8, "rows": [{"extension": "305", "name": "เจ", "total_calls": 103, "answered": 77, "missed": 25, "talktime": 6110, "avg": 79, "_raw": ["305", "เจ", "103", "77", "25", "1", "0:46:09", "1:41:50", "39", "15", "62"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "308", "name": "อุ๋ย", "total_calls": 79, "answered": 47, "missed": 30, "talktime": 6094, "avg": 129, "_raw": ["308", "อุ๋ย", "79", "47", "30", "2", "0:40:37", "1:41:34", "25", "26", "21"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "302", "name": "เตย", "total_calls": 84, "answered": 55, "missed": 29, "talktime": 5118, "avg": 93, "_raw": ["302", "เตย", "84", "55", "29", "0", "0:48:49", "1:25:18", "29", "11", "44"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "303", "name": "วุฒิ", "total_calls": 32, "answered": 20, "missed": 12, "talktime": 4477, "avg": 223, "_raw": ["303", "วุฒิ", "32", "20", "12", "0", "0:16:36", "1:14:37", "16", "6", "14"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "309", "name": "ซิน", "total_calls": 65, "answered": 33, "missed": 32, "talktime": 4429, "avg": 134, "_raw": ["309", "ซิน", "65", "33", "32", "0", "0:31:11", "1:13:49", "22", "22", "11"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "307", "name": "กัน", "total_calls": 77, "answered": 35, "missed": 40, "talktime": 3562, "avg": 101, "_raw": ["307", "กัน", "77", "35", "40", "2", "0:39:17", "0:59:22", "24", "20", "15"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "306", "name": "หน่อง", "total_calls": 59, "answered": 36, "missed": 22, "talktime": 3394, "avg": 94, "_raw": ["306", "หน่อง", "59", "36", "22", "1", "0:30:33", "0:56:34", "25", "8", "28"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}, {"extension": "304", "name": "นุช", "total_calls": 74, "answered": 50, "missed": 24, "talktime": 3245, "avg": 64, "_raw": ["304", "นุช", "74", "50", "24", "0", "0:35:51", "0:54:05", "22", "15", "35"], "_headers": ["หมายเลข", "ชื่อ", "จำนวนสาย", "รับสาย", "ไม่รับสาย", "ไม่สำเร็จ", "รอสายรวม", "ระยะเวลาคุยสาย", "คุยเกิน30วิ", "จำนวนวางสายก่อน", "จำนวนถูกตัดสาย"], "delta": null}]};
+
+    // ---- helpers ----
+    const pad = (n) => String(n).padStart(2, '0');
+    const fmtHMS = (s) => {
+      s = Math.max(0, Math.floor(s || 0));
+      const h = Math.floor(s/3600), m = Math.floor((s%3600)/60), sec = s%60;
+      return `${pad(h)}:${pad(m)}:${pad(sec)}`;
+    };
+    const fmtInt = (n) => (n == null ? '0' : Number(n).toLocaleString('th-TH'));
+
+    // ---- KPIs ----
+    const rows = DATA.rows || [];
+    const totalAgents = rows.length;
+    const totalTalk = rows.reduce((a, r) => a + (r.talktime || 0), 0);
+    const totalCalls = rows.reduce((a, r) => a + (r.total_calls || 0), 0);
+    const totalAnswered = rows.reduce((a, r) => a + (r.answered || 0), 0);
+    const avgTalk = totalAgents ? totalTalk / totalAgents : 0;
+
+    document.getElementById('kpi-agents').textContent = fmtInt(totalAgents);
+    document.getElementById('kpi-total-calls').textContent = fmtInt(totalCalls);
+    document.getElementById('kpi-answered-sub').textContent = 'รับสำเร็จ ' + fmtInt(totalAnswered) + ' สาย';
+    document.getElementById('kpi-avg').textContent = fmtHMS(avgTalk);
+
+    // ---- Table ----
+    const tbody = document.getElementById('tbody');
+    const maxTalk = rows.reduce((m, r) => Math.max(m, r.talktime || 0), 1);
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px;color:var(--ink-soft);">ยังไม่มีข้อมูล — กรุณารัน <code>python fetch_talktime.py</code> ก่อน</td></tr>';
+    } else {
+      rows.forEach((r, i) => {
+        const rank = i + 1;
+        const rankClass = rank === 1 ? 'top1' : rank === 2 ? 'top2' : rank === 3 ? 'top3' : '';
+        const pct = Math.round(((r.talktime || 0) / maxTalk) * 100);
+        const avgCall = r.total_calls ? Math.round((r.talktime || 0) / r.total_calls) : 0;
+
+        // รับสาย 30 วิ+ — อยู่ที่คอลัมน์ที่ 9 (index 8) ของ _raw
+        const over30 = (r._raw && r._raw[8] != null)
+          ? (parseInt(String(r._raw[8]).replace(/\D/g, ''), 10) || 0)
+          : 0;
+
+        // delta ระหว่างชั่วโมงก่อนกับชั่วโมงนี้ (วินาที)
+        let deltaHtml = '<span style="color:var(--ink-soft);">—</span>';
+        if (r.delta !== null && r.delta !== undefined) {
+          const d = Math.round(r.delta / 60); // แปลงเป็นนาที
+          if (d > 0) {
+            deltaHtml = `<span style="color:var(--success);font-weight:500;">+${d} นาที</span>`;
+          } else if (d < 0) {
+            deltaHtml = `<span style="color:var(--danger);">${d} นาที</span>`;
+          } else {
+            deltaHtml = `<span style="color:var(--ink-soft);">0</span>`;
+          }
+        }
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><span class="rank ${rankClass}">${rank}</span></td>
+          <td>${r.extension || '-'}</td>
+          <td><strong>${r.name || '-'}</strong></td>
+          <td class="num">${fmtInt(r.total_calls)}</td>
+          <td class="num" style="color:var(--success);">${fmtInt(r.answered)}</td>
+          <td class="num" style="color:var(--navy);font-weight:500;">${fmtInt(over30)}</td>
+          <td class="num" style="color:var(--danger);">${fmtInt(r.missed)}</td>
+          <td class="num"><strong>${fmtHMS(r.talktime)}</strong></td>
+          <td class="num">${deltaHtml}</td>
+          <td class="num">${fmtHMS(avgCall)}</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;"></div></div></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    document.getElementById('row-hint').textContent = `ทั้งหมด ${totalAgents} คน`;
+
+    // ---- Charts ----
+    const topN = rows.slice(0, 10);
+
+    // Chart 1 — Top 10 talktime (นาที)
+    if (topN.length > 0) {
+      new Chart(document.getElementById('chart-talktime'), {
+        type: 'bar',
+        data: {
+          labels: topN.map(r => r.name || r.extension || '-'),
+          datasets: [{
+            label: 'ทอล์กไทม์ (นาที)',
+            data: topN.map(r => Math.round((r.talktime || 0) / 60)),
+            backgroundColor: '#19376D',
+            borderRadius: 6,
+            maxBarThickness: 28
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  const r = topN[ctx.dataIndex];
+                  return `ทอล์กไทม์ ${fmtHMS(r.talktime)} · สาย ${fmtInt(r.total_calls)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#4A5A7A' }, grid: { color: '#EEF3FA' } },
+            y: { ticks: { color: '#0B2447', font: { family: 'Prompt', weight: '500' } }, grid: { display: false } }
+          }
+        }
+      });
+
+      // Chart 2 — Calls (total vs answered)
+      const topCalls = [...rows].sort((a,b) => (b.total_calls||0) - (a.total_calls||0)).slice(0, 10);
+      new Chart(document.getElementById('chart-calls'), {
+        type: 'bar',
+        data: {
+          labels: topCalls.map(r => r.name || r.extension || '-'),
+          datasets: [
+            {
+              label: 'โทร/สายทั้งหมด',
+              data: topCalls.map(r => r.total_calls || 0),
+              backgroundColor: '#576CBC',
+              borderRadius: 6
+            },
+            {
+              label: 'รับสำเร็จ',
+              data: topCalls.map(r => r.answered || 0),
+              backgroundColor: '#A5D7E8',
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#0B2447', font: { family: 'Prompt' } }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#0B2447', font: { family: 'Prompt' }, maxRotation: 40, minRotation: 40 }, grid: { display: false } },
+            y: { beginAtZero: true, ticks: { color: '#4A5A7A' }, grid: { color: '#EEF3FA' } }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

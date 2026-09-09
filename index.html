@@ -304,9 +304,46 @@
     .kpi-grid, .kpi-grid.kpi-grid-4 { grid-template-columns: repeat(2, 1fr); }
     .header .meta { position: static; transform: none; margin-top: 12px; text-align: left; }
   }
+
+  /* ===== TOP NAV — เมนูรวมเว็บ 2 สาขา ===== */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,31,58,.92);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topnav-inner {
+    max-width: 1500px; margin: 0 auto; padding: 10px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .topnav-brand {
+    font-weight: 700; font-size: 14px; color: var(--text);
+    letter-spacing: .5px; white-space: nowrap; text-decoration: none;
+  }
+  .topnav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .topnav-links a {
+    color: var(--text-dim); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid transparent; transition: all .15s ease;
+  }
+  .topnav-links a:hover { color: var(--text); background: var(--bg-card2); }
+  .topnav-links a.active {
+    color: #fff; background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  }
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-brand" href="https://kyps88.github.io/hq-talktime-dashboard/">☎️ INFINITY BLU8 · TALKTIME</a>
+    <div class="topnav-links">
+      <a href="https://kyps88.github.io/hq-talktime-dashboard/">🏠 ภาพรวม 2 สาขา</a>
+      <a href="https://kyps88.github.io/hq-talktime-dashboard/hq.html">🏢 HQ RAM</a>
+      <a href="https://kyps88.github.io/rama2-talktime-dashboard/" class="active">🌊 RAMA2</a>
+    </div>
+  </div>
+</nav>
 <div class="wrap">
 
   <div class="header">

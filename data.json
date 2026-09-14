@@ -1,29 +1,29 @@
 {
-  "updated_at": "2026-09-14T07:00:40",
-  "updated_label": "14/09/2026 07:00",
+  "updated_at": "2026-09-14T07:22:49",
+  "updated_label": "14/09/2026 07:22",
   "source": "https://client.yalecom.co.th/custom_menu/extension_summary_outbound",
   "row_count": 2,
   "rows": [
     {
       "extension": "308",
       "name": "พลอย",
-      "total_calls": 51,
-      "answered": 30,
+      "total_calls": 53,
+      "answered": 32,
       "missed": 21,
-      "talktime": 4309,
-      "avg": 143,
+      "talktime": 4407,
+      "avg": 137,
       "_raw": [
         "308",
         "พลอย",
-        "51",
-        "30",
+        "53",
+        "32",
         "21",
         "0",
-        "0:22:53",
-        "1:11:49",
-        "21",
+        "0:23:20",
+        "1:13:27",
+        "22",
         "13",
-        "17"
+        "19"
       ],
       "_headers": [
         "หมายเลข",

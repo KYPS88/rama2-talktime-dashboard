@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-17T18:00:47+07:00",
+  "as_of": "2026-09-17T18:11:37+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -13,7 +13,7 @@
       "sales_today": 3290.0,
       "orders_today": 1,
       "avg_basket_today": 3290.0,
-      "target_daily": 9080.0,
+      "target_daily": 9606.0,
       "month_sales": 44330.0,
       "month_target": 150000.0
     },
@@ -69,7 +69,7 @@
       "sales_today": 4070.0,
       "orders_today": 2,
       "avg_basket_today": 2035.0,
-      "target_daily": 9034.0,
+      "target_daily": 9485.0,
       "month_sales": 45660.0,
       "month_target": 150000.0
     },
@@ -77,7 +77,7 @@
       "sales_today": 4070.0,
       "orders_today": 2,
       "avg_basket_today": 2035.0,
-      "target_daily": 8917.0,
+      "target_daily": 9727.0,
       "month_sales": 10650.0,
       "month_target": 107000.0
     }

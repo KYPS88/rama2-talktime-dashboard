@@ -1,29 +1,29 @@
 {
-  "updated_at": "2026-09-19T10:30:32",
-  "updated_label": "19/09/2026 10:30",
+  "updated_at": "2026-09-19T11:00:40",
+  "updated_label": "19/09/2026 11:00",
   "source": "https://client.yalecom.co.th/custom_menu/extension_summary_outbound",
   "row_count": 1,
   "rows": [
     {
       "extension": "309",
       "name": "อุ๋ย",
-      "total_calls": 146,
-      "answered": 75,
+      "total_calls": 147,
+      "answered": 76,
       "missed": 70,
-      "talktime": 9364,
-      "avg": 124,
+      "talktime": 10763,
+      "avg": 141,
       "_raw": [
         "309",
         "อุ๋ย",
-        "146",
-        "75",
+        "147",
+        "76",
         "70",
         "1",
-        "1:11:53",
-        "2:36:04",
-        "48",
+        "1:12:18",
+        "2:59:23",
+        "49",
         "37",
-        "38"
+        "39"
       ],
       "_headers": [
         "หมายเลข",

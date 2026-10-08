@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-07T21:30:46+07:00",
+  "as_of": "2026-10-08T09:30:48+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -10,10 +10,10 @@
       "month_target": 0.0
     },
     "เตย": {
-      "sales_today": 8290.0,
-      "orders_today": 1,
-      "avg_basket_today": 8290.0,
-      "target_daily": 7105.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 7043.0,
       "month_sales": 21340.0,
       "month_target": 155150.0
     },
@@ -50,10 +50,10 @@
       "month_target": 0.0
     },
     "อุ๋ย": {
-      "sales_today": 13810.0,
-      "orders_today": 6,
-      "avg_basket_today": 2302.0,
-      "target_daily": 6523.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 6139.0,
       "month_sales": 38510.0,
       "month_target": 155150.0
     },
@@ -66,18 +66,18 @@
       "month_target": 0.0
     },
     "พลอย": {
-      "sales_today": 2280.0,
-      "orders_today": 1,
-      "avg_basket_today": 2280.0,
-      "target_daily": 7225.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 7485.0,
       "month_sales": 12930.0,
       "month_target": 155150.0
     },
     "นัน": {
-      "sales_today": 1790.0,
-      "orders_today": 1,
-      "avg_basket_today": 1790.0,
-      "target_daily": 5350.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 5537.0,
       "month_sales": 1790.0,
       "month_target": 107000.0
     },
@@ -85,7 +85,7 @@
       "sales_today": 0.0,
       "orders_today": 0,
       "avg_basket_today": 0.0,
-      "target_daily": 5350.0,
+      "target_daily": 5632.0,
       "month_sales": 0.0,
       "month_target": 107000.0
     },
@@ -93,7 +93,7 @@
       "sales_today": 0.0,
       "orders_today": 0,
       "avg_basket_today": 0.0,
-      "target_daily": 5350.0,
+      "target_daily": 5632.0,
       "month_sales": 0.0,
       "month_target": 107000.0
     }

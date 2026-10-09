@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-09T16:00:42+07:00",
+  "as_of": "2026-10-09T16:30:33+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -66,11 +66,11 @@
       "month_target": 0.0
     },
     "พลอย": {
-      "sales_today": 7360.0,
-      "orders_today": 3,
-      "avg_basket_today": 2453.0,
+      "sales_today": 8050.0,
+      "orders_today": 4,
+      "avg_basket_today": 2013.0,
       "target_daily": 7289.0,
-      "month_sales": 23950.0,
+      "month_sales": 24640.0,
       "month_target": 155150.0
     },
     "นัน": {
@@ -82,11 +82,11 @@
       "month_target": 107000.0
     },
     "แคร์": {
-      "sales_today": 4870.0,
-      "orders_today": 2,
-      "avg_basket_today": 2435.0,
+      "sales_today": 7460.0,
+      "orders_today": 3,
+      "avg_basket_today": 2487.0,
       "target_daily": 5636.0,
-      "month_sales": 5560.0,
+      "month_sales": 8150.0,
       "month_target": 107000.0
     },
     "มี่": {

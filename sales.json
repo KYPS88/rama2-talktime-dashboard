@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-12T21:30:37+07:00",
+  "as_of": "2026-10-14T09:30:37+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -10,10 +10,10 @@
       "month_target": 0.0
     },
     "เตย": {
-      "sales_today": 690.0,
-      "orders_today": 1,
-      "avg_basket_today": 690.0,
-      "target_daily": 7632.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 8066.0,
       "month_sales": 26100.0,
       "month_target": 155150.0
     },
@@ -50,10 +50,10 @@
       "month_target": 0.0
     },
     "อุ๋ย": {
-      "sales_today": 6660.0,
-      "orders_today": 3,
-      "avg_basket_today": 2220.0,
-      "target_daily": 6756.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 6874.0,
       "month_sales": 45170.0,
       "month_target": 155150.0
     },
@@ -66,10 +66,10 @@
       "month_target": 0.0
     },
     "พลอย": {
-      "sales_today": 6350.0,
-      "orders_today": 3,
-      "avg_basket_today": 2117.0,
-      "target_daily": 7304.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 7760.0,
       "month_sales": 30990.0,
       "month_target": 155150.0
     },
@@ -77,23 +77,23 @@
       "sales_today": 0.0,
       "orders_today": 0,
       "avg_basket_today": 0.0,
-      "target_daily": 6148.0,
+      "target_daily": 6533.0,
       "month_sales": 2480.0,
       "month_target": 107000.0
     },
     "แคร์": {
-      "sales_today": 2590.0,
+      "sales_today": 3635.0,
       "orders_today": 1,
-      "avg_basket_today": 2590.0,
-      "target_daily": 5662.0,
-      "month_sales": 10740.0,
+      "avg_basket_today": 3635.0,
+      "target_daily": 6016.0,
+      "month_sales": 14375.0,
       "month_target": 107000.0
     },
     "มี่": {
-      "sales_today": 7650.0,
-      "orders_today": 4,
-      "avg_basket_today": 1913.0,
-      "target_daily": 5488.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 5576.0,
       "month_sales": 17780.0,
       "month_target": 107000.0
     }

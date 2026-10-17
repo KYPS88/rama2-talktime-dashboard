@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-17T06:00:40",
-  "updated_label": "17/10/2026 06:00",
+  "updated_at": "2026-10-17T06:30:29",
+  "updated_label": "17/10/2026 06:30",
   "source": "https://client.yalecom.co.th/custom_menu/extension_summary_outbound",
   "row_count": 5,
   "rows": [
@@ -115,23 +115,23 @@
     {
       "extension": "312",
       "name": "มี่",
-      "total_calls": 95,
-      "answered": 37,
+      "total_calls": 96,
+      "answered": 38,
       "missed": 57,
-      "talktime": 4085,
-      "avg": 110,
+      "talktime": 4117,
+      "avg": 108,
       "_raw": [
         "312",
         "มี่",
-        "95",
-        "37",
+        "96",
+        "38",
         "57",
         "1",
-        "0:47:24",
-        "1:08:05",
-        "24",
+        "0:47:51",
+        "1:08:37",
+        "25",
         "18",
-        "19"
+        "20"
       ],
       "_headers": [
         "หมายเลข",

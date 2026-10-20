@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-20T06:00:40",
-  "updated_label": "20/10/2026 06:00",
+  "updated_at": "2026-10-20T06:30:32",
+  "updated_label": "20/10/2026 06:30",
   "source": "https://client.yalecom.co.th/custom_menu/extension_summary_outbound",
   "row_count": 5,
   "rows": [
@@ -115,23 +115,23 @@
     {
       "extension": "311",
       "name": "แคร์",
-      "total_calls": 89,
-      "answered": 50,
+      "total_calls": 90,
+      "answered": 51,
       "missed": 38,
-      "talktime": 3311,
-      "avg": 66,
+      "talktime": 3417,
+      "avg": 67,
       "_raw": [
         "311",
         "แคร์",
-        "89",
-        "50",
+        "90",
+        "51",
         "38",
         "1",
-        "0:39:30",
-        "0:55:11",
-        "24",
+        "0:39:39",
+        "0:56:57",
+        "25",
         "9",
-        "41"
+        "42"
       ],
       "_headers": [
         "หมายเลข",

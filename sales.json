@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-19T21:30:38+07:00",
+  "as_of": "2026-10-20T09:30:37+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -10,10 +10,10 @@
       "month_target": 0.0
     },
     "เตย": {
-      "sales_today": 5570.0,
-      "orders_today": 2,
-      "avg_basket_today": 2785.0,
-      "target_daily": 9951.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 10349.0,
       "month_sales": 41310.0,
       "month_target": 155150.0
     },
@@ -50,10 +50,10 @@
       "month_target": 0.0
     },
     "อุ๋ย": {
-      "sales_today": 4070.0,
-      "orders_today": 2,
-      "avg_basket_today": 2035.0,
-      "target_daily": 7136.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 7415.0,
       "month_sales": 73590.0,
       "month_target": 155150.0
     },
@@ -66,11 +66,11 @@
       "month_target": 0.0
     },
     "พลอย": {
-      "sales_today": 4070.0,
-      "orders_today": 2,
-      "avg_basket_today": 2035.0,
-      "target_daily": 9178.0,
-      "month_sales": 49080.0,
+      "sales_today": 1790.0,
+      "orders_today": 1,
+      "avg_basket_today": 1790.0,
+      "target_daily": 9643.0,
+      "month_sales": 50870.0,
       "month_target": 155150.0
     },
     "นัน": {
@@ -82,18 +82,18 @@
       "month_target": 107000.0
     },
     "แคร์": {
-      "sales_today": 1790.0,
-      "orders_today": 1,
-      "avg_basket_today": 1790.0,
-      "target_daily": 6401.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 6820.0,
       "month_sales": 31975.0,
       "month_target": 107000.0
     },
     "มี่": {
-      "sales_today": 2590.0,
-      "orders_today": 1,
-      "avg_basket_today": 2590.0,
-      "target_daily": 5189.0,
+      "sales_today": 0.0,
+      "orders_today": 0,
+      "avg_basket_today": 0.0,
+      "target_daily": 5425.0,
       "month_sales": 47320.0,
       "month_target": 107000.0
     }

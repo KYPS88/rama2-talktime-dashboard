@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-23T16:00:43+07:00",
+  "as_of": "2026-10-23T16:30:39+07:00",
   "by_employee": {
     "วุฒิ": {
       "sales_today": 0.0,
@@ -82,11 +82,11 @@
       "month_target": 107000.0
     },
     "แคร์": {
-      "sales_today": 4560.0,
-      "orders_today": 2,
-      "avg_basket_today": 2280.0,
+      "sales_today": 6350.0,
+      "orders_today": 3,
+      "avg_basket_today": 2117.0,
       "target_daily": 8658.0,
-      "month_sales": 42295.0,
+      "month_sales": 44085.0,
       "month_target": 107000.0
     },
     "มี่": {
